@@ -1,6 +1,7 @@
 fx_version 'cerulean'
 game 'gta5'
---a
+
+
 shared_scripts {
 	'config.lua',
 	'@qb-garages/config.lua'

@@ -4,7 +4,7 @@ game 'gta5'
 
 shared_scripts {
 	'config.lua',
-	'@qb-garages/config.lua'
+	'@qb-garages/config.lua'-----
 }
 
 client_scripts {

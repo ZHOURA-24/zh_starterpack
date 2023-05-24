@@ -1,9 +1,7 @@
 Config = {}
 
-Config.Plate = "ZH"
-Config.Vehicle = "dubsta"
-
-Config.lang = {
-    Header = "Pilihan Garasi Untuk Memasukan Kendaraan",
-    Text = "Pilih Garasi"
+Config.Vehbox = {
+    model = "dubsta",
+    spawn = false,
+    use_garage = true -- if true you have to disable spawn
 }

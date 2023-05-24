@@ -1,6 +1,7 @@
 # zh-vehbox
 Items for new players Claim vehicles
 # Preview
+-- OLD PREVIEW
 https://youtu.be/2cL1qGVKyWw
 
 if use garage change in fx.manifest.lua

@@ -14,7 +14,7 @@ RegisterNetEvent('zh-vehbox:client:ClaimVehicle', function()
                     })
                 end)
             end
-        end, Config.Vehbox.model, nil)
+        end, Config.Vehbox.model, nil, 0)
     elseif Config.Vehbox.use_garage then
         local options = {}
         for k, v in pairs(Config.Garages) do
@@ -40,6 +40,6 @@ RegisterNetEvent('zh-vehbox:client:ClaimVehicle', function()
                     type = 'success'
                 })
             end
-        end, Config.Vehbox.model, tostring(input[1]))
+        end, Config.Vehbox.model, tostring(input[1]), 1)
     end
 end)

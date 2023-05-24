@@ -40,14 +40,14 @@ Framework.CreateUsableItem('boxvehicle', function(source)
     TriggerClientEvent('zh-vehbox:client:ClaimVehicle', source)
 end)
 
-lib.callback.register('zh-vehbox:server:ClaimVehicle', function(source, model, garage)
+lib.callback.register('zh-vehbox:server:ClaimVehicle', function(source, model, garage, state)
     local src = source
     local plate = GeneratePlate()
     local props = {
         model = GetHashKey(model),
         plate = plate
     }
-    Framework.SetVehicleOwned(source, model, props, garage)
+    Framework.SetVehicleOwned(source, model, props, garage, state)
     Framework.RemoveItem(src, 'boxvehicle', 1)
     return props
 end)

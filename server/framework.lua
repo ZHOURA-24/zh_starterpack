@@ -1,14 +1,14 @@
 if Framework.ESX() then
     local ESX = exports['es_extended']:getSharedObject()
 
-    function Framework.SetVehicleOwned(src, model, properties, garage)
+    function Framework.SetVehicleOwned(src, model, properties, garage, state)
         local xPlayer = ESX.GetPlayerFromId(src)
         MySQL.insert('INSERT INTO owned_vehicles (owner, plate, vehicle, stored, parking) VALUES (?, ?, ?, ?, ?)',
             {
                 xPlayer.identifier,
                 properties.plate,
                 json.encode(properties),
-                0,
+                state,
                 garage
             }
         )
@@ -34,7 +34,7 @@ end
 
 if Framework.QBCore() then
     local QBCore = exports['qb-core']:GetCoreObject()
-    function Framework.SetVehicleOwned(src, model, properties, garage)
+    function Framework.SetVehicleOwned(src, model, properties, garage, state)
         local Player = QBCore.Functions.GetPlayer(src)
         MySQL.insert(
             'INSERT INTO player_vehicles (license, citizenid, vehicle, hash, mods, plate, state, garage) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
@@ -45,7 +45,7 @@ if Framework.QBCore() then
                 properties.model,
                 json.encode(properties),
                 properties.plate,
-                0,
+                state,
                 garage
             }
         )

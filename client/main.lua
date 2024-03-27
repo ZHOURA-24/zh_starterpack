@@ -1,7 +1,7 @@
 RegisterNetEvent('zh-vehbox:client:ClaimVehicle', function()
     local pedCoords = GetEntityCoords(cache.ped)
     local heading = GetEntityHeading(cache.ped)
-    if Config.Vehbox.spawn and not Config.Vehbox.use_garage then
+    if not Config.Vehbox.use_garage then
         lib.callback('zh-vehbox:server:ClaimVehicle', false, function(props)
             if props then
                 Framework.SpawnVehicle(Config.Vehbox.model, pedCoords, heading, function(veh)
@@ -28,7 +28,8 @@ RegisterNetEvent('zh-vehbox:client:ClaimVehicle', function()
                 type = 'select',
                 options = options,
                 icon = 'warehouse',
-                required = true
+                required = true,
+                label = 'Select Garages'
             },
         })
         if not input then return end

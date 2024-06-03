@@ -30,8 +30,16 @@ return {
     ---@return { value: string, label: string }[]
     get_garage = not IsDuplicityVersion() and function() -- garage options
         local options = {}
-        if GetResourceState("esx_garage") then
+        if GetResourceState("esx_garage") ~= "missing"  then
             require '@esx_garage.config'
+            for k, v in pairs(Config.Garages) do
+                table.insert(options, {
+                    value = tostring(k),
+                    label = v.label or k
+                })
+            end
+        elseif GetResourceState("qb-garages") ~= "missing" then
+            require '@qb-garages.config'
             for k, v in pairs(Config.Garages) do
                 table.insert(options, {
                     value = tostring(k),

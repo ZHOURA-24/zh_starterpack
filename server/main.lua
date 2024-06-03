@@ -59,6 +59,13 @@ if config.give_item_new_player then
                 xPlayer.addInventoryItem(config.item, 1)
             end
         end)
-        return
+    end
+
+    if Framework.QBCore() then
+        RegisterNetEvent('qb-multicharacter:server:createCharacter', function()
+            local src = source
+            local player = Framework.GetPlayer(src)
+            player.addInventoryItem(config.item, 1)
+        end)
     end
 end

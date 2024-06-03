@@ -33,6 +33,25 @@ end
 
 if Framework.QBCore() then
     local QBCore = exports['qb-core']:GetCoreObject()
+
+    function Framework.GetPlayer(src)
+        local player = QBCore.Functions.GetPlayer(src)
+        local self = {}
+        self.getMeta = function(key)
+            return player.PlayerData.metadata[key]
+        end
+        self.setMeta = function(key, value)
+            player.Functions.SetMetaData(key, value)
+        end
+        self.addInventoryItem = function(item, amount)
+            player.Functions.AddItem(item, amount)
+        end
+        self.removeInventoryItem = function(item, amount)
+            player.Functions.RemoveItem(item, amount)
+        end
+        return self
+    end
+
     function Framework.SetVehicleOwned(src, model, properties, garage, state)
         local Player = QBCore.Functions.GetPlayer(src)
         MySQL.insert(
@@ -61,5 +80,4 @@ if Framework.QBCore() then
     function Framework.CreateUsableItem(item, cb)
         QBCore.Functions.CreateUseableItem(item, cb)
     end
-
 end

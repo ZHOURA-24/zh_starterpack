@@ -1,6 +1,10 @@
 if Framework.ESX() then
     local ESX = exports['es_extended']:getSharedObject()
 
+    function Framework.GetPlayer(src)
+        return ESX.GetPlayerFromId(src)
+    end
+
     function Framework.SetVehicleOwned(src, model, properties, garage, state)
         local xPlayer = ESX.GetPlayerFromId(src)
         MySQL.insert('INSERT INTO owned_vehicles (owner, plate, vehicle, stored, parking) VALUES (?, ?, ?, ?, ?)',
@@ -24,11 +28,6 @@ if Framework.ESX() then
 
     function Framework.CreateUsableItem(item, cb)
         ESX.RegisterUsableItem(item, cb)
-    end
-
-    function Framework.RemoveItem(src, item, amount)
-        local xPlayer = ESX.GetPlayerFromId(src)
-        xPlayer.removeInventoryItem(item, amount)
     end
 end
 
@@ -63,8 +62,4 @@ if Framework.QBCore() then
         QBCore.Functions.CreateUseableItem(item, cb)
     end
 
-    function Framework.RemoveItem(src, item, amount)
-        local Player = QBCore.Functions.GetPlayer(src)
-        Player.Functions.RemoveItem(item, amount)
-    end
 end

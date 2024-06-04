@@ -27,7 +27,7 @@ ox_inventory
 		weight = 100,
 		stack = true,
 		client = {
-			export = 'zh-vehbox.box_starterpack'
+			export = 'zh_starterpack.box_starterpack'
 		}
 	},
 ```

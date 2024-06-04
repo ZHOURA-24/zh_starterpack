@@ -56,6 +56,6 @@ INSERT INTO `items` (name, label, weight) VALUES
 ### Start resource
 
 ```
-start zh_statusitem
+start zh_starterpack
 ```
   
